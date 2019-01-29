@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.duoshan.www.lib_common.model.FloatRect;
+
 /**
  * author:  zhouchaoxiang
  * date:    2019/1/23
@@ -16,7 +18,7 @@ import android.widget.LinearLayout;
 public class BottomTagBar extends LinearLayout {
     private int mTagHeight = 100;
     private int mIndex;
-    private Rect[] childDevRect;//保存误差
+    private FloatRect[] childDevRect;//保存误差
 
     public BottomTagBar(Context context) {
         this(context, null);
@@ -34,7 +36,7 @@ public class BottomTagBar extends LinearLayout {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        childDevRect = new Rect[getChildCount()];
+        childDevRect = new FloatRect[getChildCount()];
     }
 
     @Override
@@ -83,10 +85,24 @@ public class BottomTagBar extends LinearLayout {
     }
 
     public void setChangeChildLayout(int index, float left, float top, float right, float bottom) {
-        if (childDevRect == null) childDevRect = new Rect[getChildCount()];
-        childDevRect[index].set(left, top, right, bottom);
+        if (childDevRect == null) childDevRect = new FloatRect[getChildCount()];
+        FloatRect floatRect = childDevRect[index];
+        if (floatRect == null) floatRect = new FloatRect();
         View child = getChildAt(index);
-        child.layout(child.getLeft() - left, child.getTop() - top, child.getRight() - right, child.getBottom() - bottom);
+        floatRect.setLeft(floatRect.getLeft() + left % 1);
+        floatRect.setTop(floatRect.getTop() + top % 1);
+        floatRect.setRight(floatRect.getRight() + right % 1);
+        floatRect.setBottom(floatRect.getBottom() + bottom % 1);
+
+        int leftInt = (int) left;
+        int topInt = (int) top;
+        int rightInt = (int) right;
+        int bottomInt = (int) bottom;
+        if (floatRect.getLeft()>1){
+            leftInt += (int)floatRect.getLeft();
+            floatRect.setLeft();
+        }
+                child.layout(child.getLeft() - left, child.getTop() - top, child.getRight() - right, child.getBottom() - bottom);
 //        postInvalidate();
     }
 
