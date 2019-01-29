@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'kotlin-android'
+//
+//apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion build_version.target_sdk
+
+
+
+    defaultConfig {
+        minSdkVersion build_version.min_sdk
+        targetSdkVersion build_version.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions{
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    compileOnly deps.support.annotation
+    api deps.support.appcompat
+    api deps.support.design
+    api deps.support.v4
+    api deps.support.constrain
+    api deps.support.recyclerview
+//    testApi deps.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+//    androidTestApi deps.test.espresso
+//    api deps.arouter.api
+//    annotationProcessor deps.arouter.annotation
+
+//    api deps.kotlin.kotlin
+
+    api deps.lifecycle.runtime
+    api deps.lifecycle.extensions
+//    api deps.lifecycle.compiler
+    //http
+    api deps.retrofit.retrofit
+    api deps.retrofit.fastjson
+    api deps.butterknife.api
+    annotationProcessor deps.butterknife.annotation
+    api deps.retrofit.adapter_rxjava2
+    api deps.rxjava.rxandroid
+//    api deps.fillet_imageview
+//    api deps.logger
+//    api deps.recyclerview_helper
+//    api deps.glide
+//    api deps.glide_transformations
+//    api(deps.vlayout) {
+//        transitive = true
+//    }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/yellow"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <com.duoshan.www.lib_common.ui.widget.BottomTagBar
+        android:id="@+id/btb_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/translucent"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <com.duoshan.www.lib_common.ui.widget.TagView
+            android:id="@+id/tag_msg"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp48"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp18"
+            android:text="@string/home_msg" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/aciv_center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/donut"
+            android:background="@color/colorAccent" />
+
+        <com.duoshan.www.lib_common.ui.widget.TagView
+            android:id="@+id/tag_world"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp48"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/home_world" />
+    </com.duoshan.www.lib_common.ui.widget.BottomTagBar>
+</FrameLayout>

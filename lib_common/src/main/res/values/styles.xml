@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<style name="BaseTheme" parent="@android:style/Theme.Holo">
+        <item name="android:colorForeground">@color/color_foreground</item>
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:disabledAlpha">@dimen/float_0.3</item>
+        <item name="android:textAppearance">@style/text_appearance_style</item>
+        <item name="android:textAppearanceInverse">@style/text_color_style</item>
+        <item name="android:textColorPrimary">@color/text_color_primary</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/text_color_primary_disable_only
+        </item>-->
+        <!--<item name="android:textColorSecondary">@color/xw</item>-->
+        <!--<item name="android:textColorPrimaryInverse">@color/xu</item>-->
+        <!--<item name="android:textColorSecondaryInverse">@color/xx</item>-->
+        <!--<item name="android:textColorHintInverse">@color/xq</item>-->
+        <!--<item name="android:textAppearanceLarge">@style/fw</item>-->
+        <!--<item name="android:textAppearanceMedium">@style/g2</item>-->
+        <!--<item name="android:textAppearanceSmall">@style/g7</item>-->
+        <!--<item name="android:textAppearanceLargeInverse">@style/fx</item>-->
+        <!--<item name="android:textAppearanceMediumInverse">@style/g3</item>-->
+        <!--<item name="android:textAppearanceSmallInverse">@style/g8</item>-->
+        <!--<item name="android:windowBackground">@color/gh</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:textColorHighlight">@color/md</item>-->
+        <!--<item name="android:textColorHint">@color/xp</item>-->
+        <!--<item name="android:textColorLink">?ez</item>-->
+        <!--<item name="android:colorForegroundInverse">@color/m9</item>-->
+        <!--<item name="android:textColorTertiary">@color/xw</item>-->
+        <!--<item name="android:textColorTertiaryInverse">@color/xx</item>-->
+        <!--<item name="android:listChoiceIndicatorSingle">@drawable/a0</item>-->
+        <!--<item name="android:listChoiceIndicatorMultiple">@drawable/x</item>-->
+        <!--<item name="android:colorBackgroundCacheHint">@color/xl</item>-->
+        <!--<item name="android:textSelectHandleLeft">@drawable/s_</item>-->
+        <!--<item name="android:textSelectHandleRight">@drawable/sd</item>-->
+        <!--<item name="android:textSelectHandle">@drawable/sb</item>-->
+        <!--<item name="android:windowActionBar">false</item>-->
+        <!--<item name="android:textColorAlertDialogListItem">@color/xt</item>-->
+        <!--<item name="android:actionModeCutDrawable">?di</item>-->
+        <!--<item name="android:actionModeCopyDrawable">?dj</item>-->
+        <!--<item name="android:actionModePasteDrawable">?dk</item>-->
+        <!--<item name="android:borderlessButtonStyle">?e5</item>-->
+        <!--<item name="android:buttonBarStyle">?e1</item>-->
+        <!--<item name="android:buttonBarButtonStyle">?e2</item>-->
+        <!--<item name="android:textColorHighlightInverse">@color/me</item>-->
+        <!--<item name="android:textColorLinkInverse">?ez</item>-->
+        <!--<item name="android:actionModeSelectAllDrawable">?dl</item>-->
+        <!--<item name="android:listPreferredItemPaddingLeft">@dimen/az</item>-->
+        <!--<item name="android:listPreferredItemPaddingRight">@dimen/az</item>-->
+    <!--</style>-->
+
+    <!--<style name="BackgroundTheme" parent="BaseTheme">-->
+        <!--<item name="android:panelBackground">@android:color/transparent</item>-->
+        <!--<item name="android:dropDownListViewStyle">@style/jl</item>-->
+        <!--<item name="android:dropDownItemStyle">@style/iu</item>-->
+        <!--<item name="android:spinnerItemStyle">@style/k3</item>-->
+        <!--<item name="android:textAppearanceButton">@style/gl</item>-->
+    <!--</style>-->
+
+    <!--<style name="ColorTheme" parent="BackgroundTheme">-->
+        <!--<item name="android:colorBackground">@color/k8</item>-->
+        <!--<item name="android:textColorPrimary">@color/k7</item>-->
+        <!--<item name="android:windowBackground">@color/k8</item>-->
+        <!--<item name="android:autoCompleteTextViewStyle">@style/AutoTextViewStyle</item>-->
+        <!--<item name="android:listSelector">?g</item>-->
+    <!--</style>-->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_ba</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!--<item name="android:dropDownListViewStyle">@style/drop_down_style</item>-->
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <!--<style name="drop_down_style" parent="@android:style/Widget.ListView.DropDown">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:scrollingCache">false</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:divider">@null</item>
+    </style>-->
+
+    <!--<style name="auto_text_view_style" parent="@android:style/Widget.Holo.Light.AutoCompleteTextView" />-->
+
+    <!--<style name="text_appearance_style" parent="@android:style/TextAppearance">-->
+        <!--<item name="android:textSize">@dimen/sp14</item>-->
+        <!--<item name="android:textColor">?android:textColorPrimary</item>-->
+        <!--<item name="android:textColorHighlight">?android:textColorHighlight</item>-->
+        <!--<item name="android:textColorHint">?android:textColorHint</item>-->
+        <!--<item name="android:textColorLink">?android:textColorLink</item>-->
+    <!--</style>-->
+
+    <!--<style name="text_color_style" parent="@style/text_appearance_style">-->
+        <!--<item name="android:textColor">?android:textColorPrimaryInverse</item>-->
+        <!--<item name="android:textColorHighlight">?android:textColorHighlightInverse</item>-->
+        <!--<item name="android:textColorHint">?android:textColorHintInverse</item>-->
+        <!--<item name="android:textColorLink">?android:textColorLinkInverse</item>-->
+    <!--</style>-->
+</resources>
