@@ -2,4 +2,9 @@
 
     <!-- Base application theme. -->
 
+    <style name="text_home_bottom">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
 </resources>

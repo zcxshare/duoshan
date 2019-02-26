@@ -15,6 +15,6 @@
         android:id="@+id/iv_tag"
         android:layout_width="@dimen/dp20"
         android:layout_height="@dimen/dp5"
-        android:src="@drawable/shape_tag"/>
+        android:src="@drawable/shape_indicator"/>
 
 </FrameLayout>

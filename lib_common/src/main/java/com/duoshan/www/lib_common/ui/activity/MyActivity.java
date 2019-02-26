@@ -34,7 +34,7 @@ public abstract class MyActivity<VM extends MyViewModel> extends AppCompatActivi
 
     }
 
-    private void initBefore(Bundle savedInstanceState) {
+    protected void initBefore(Bundle savedInstanceState) {
     }
 
     protected abstract int getLayoutId();

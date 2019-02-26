@@ -16,6 +16,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
     compileOptions {
         targetCompatibility 1.8
@@ -26,4 +30,6 @@ android {
 dependencies {
     implementation project(':lib_common')
     annotationProcessor deps.butterknife.annotation
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
 }

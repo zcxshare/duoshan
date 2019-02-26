@@ -1,23 +1,25 @@
 package com.duoshan.www.duoshan.ui.activity;
 
-import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.util.AttributeSet;
-import android.util.Log;
+import android.os.Build;
 import android.view.View;
-import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.duoshan.www.duoshan.R;
 import com.duoshan.www.duoshan.ui.adapter.MainVpAdapter;
 import com.duoshan.www.duoshan.ui.fragment.MessageFragment;
+import com.duoshan.www.duoshan.ui.fragment.WorldFragment;
 import com.duoshan.www.duoshan.viewmodel.MainViewModel;
 import com.duoshan.www.lib_common.ui.fragment.MyFragment;
-import com.duoshan.www.lib_common.ui.widget.BottomTagBar;
-import com.duoshan.www.lib_common.ui.widget.TagView;
+import com.duoshan.www.lib_common.ui.widget.BottomTabLayout;
+import com.duoshan.www.lib_common.ui.widget.TabView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.viewpager.widget.ViewPager;
@@ -33,18 +35,33 @@ public class MainActivity extends BaseActivity<MainViewModel> implements Message
     @BindView(R.id.vp_home)
     ViewPager mVpHome;
     @BindView(R.id.tag_msg)
-    TagView mTagMsg;
+    TabView mTagMsg;
     @BindView(R.id.aciv_center)
-    AppCompatImageView mAcivCenter;
+    TabView mAcivCenter;
     @BindView(R.id.tag_world)
-    TagView mTagWorld;
+    TabView mTagWorld;
     @BindView(R.id.btb_bottom_bar)
-    BottomTagBar mBtbBottomBar;
+    BottomTabLayout mBtbBottomBar;
     @BindView(R.id.cl_home)
     FrameLayout mClHome;
     private List<MyFragment> mFragments;
     private float mScale0;
     private float mScale2;
+    private Drawable mBottomRingDrawable;
+
+    @Override
+    protected void initAfter() {
+        Window window = getWindow();
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(0x00000000);  // transparent
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            int flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+            window.addFlags(flags);
+        }
+    }
 
     @Override
     protected int getLayoutId() {
@@ -54,7 +71,12 @@ public class MainActivity extends BaseActivity<MainViewModel> implements Message
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+        initBottom();
         initVp();
+    }
+
+    private void initBottom() {
+        mBtbBottomBar.initManyFlash(mVpHome);
     }
 
     private void initVp() {
@@ -66,7 +88,7 @@ public class MainActivity extends BaseActivity<MainViewModel> implements Message
         MessageFragment f2 = new MessageFragment();
 //        f2.getView().setBackgroundResource(R.color.yellow);
         mFragments.add(f2);
-        MessageFragment f3 = new MessageFragment();
+        WorldFragment f3 = new WorldFragment();
 //        f3.getView().setBackgroundResource(R.color.blue);
         mFragments.add(f3);
         MainVpAdapter mainVpAdapter = new MainVpAdapter(getSupportFragmentManager(), mFragments);
@@ -74,48 +96,10 @@ public class MainActivity extends BaseActivity<MainViewModel> implements Message
     }
 
     private void initScale() {
-        getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            int Vpwidth = mVpHome.getWidth();
-            int width = mBtbBottomBar.getChildAt(0).getWidth();
-            mScale0 = Math.round((width / 3f)*10 / Vpwidth)/10f;
-//        width = mBtbBottomBar.getChildAt(1).getWidth();
-            width = mBtbBottomBar.getChildAt(2).getWidth();
-            mScale2 = Math.round((width / 3f)*10 / Vpwidth)/10f;
-
-        });
     }
 
     @Override
     protected void initEvent() {
-        mVpHome.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            private int mLastPixel;
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.i(TAG, "onPageScrolled: position:" + position + "---positionOffset:" + positionOffset + "---positionOffsetPixels:" + positionOffsetPixels);
-                if (positionOffsetPixels == 0) return;
-                int dif = positionOffsetPixels - mLastPixel;
-                int Vpwidth = mVpHome.getWidth()*3;
-                int width = mBtbBottomBar.getChildAt(0).getWidth();
-                int div = Math.round(dif * width/Vpwidth);
-                mBtbBottomBar.setChangeChildLayout(0,div,0,div,0 );
-                mBtbBottomBar.setChangeChildLayout(2,-div,0,-div,0 );
-//                mBtbBottomBar.setChangeChildLayout(1, dif, 0, dif, 0);
-                mLastPixel = positionOffsetPixels;
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                Log.i(TAG, "onPageSelected: position:" + position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                Log.i(TAG, "onPageScrollStateChanged: state:" + state);
-
-            }
-        });
     }
 
     @OnClick({R.id.tag_msg, R.id.aciv_center, R.id.tag_world})

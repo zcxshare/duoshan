@@ -39,7 +39,6 @@ dependencies {
     api deps.support.v4
     api deps.support.constrain
     api deps.support.recyclerview
-//    testApi deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.atsl.rules
 //    androidTestApi deps.test.espresso
